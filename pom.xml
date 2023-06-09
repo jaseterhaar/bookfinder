@@ -44,12 +44,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.google.apis</groupId>
-			<artifactId>google-api-services-books</artifactId>
-			<version>v1-rev114-1.25.0</version>
-		</dependency>
-
-		<dependency>
 			<groupId>jakarta.validation</groupId>
 			<artifactId>jakarta.validation-api</artifactId>
 		</dependency>
