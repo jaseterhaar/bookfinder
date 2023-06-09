@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Vind uw boek!</title>
+	<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+	<main>
+		<h1>Google Books</h1>
+		<h3>Vind de nieuwste versies van uw boek</h3>
+		<form th:object="${bookSearchForm}" th:action="@{/books/search}" method="post">
+			<div class="form-group">
+				<label for="title">Titel:</label> 
+				<input type="text" id="title" th:field="*{title}" required> 
+				<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-message"></span>
+			</div>
+			<div class="form-group">
+			    <label for="language">Taal:</label>
+			    <select id="language" name="language">
+			      <option value="">Alle talen</option>
+			      <option value="nl">Nederlands</option>
+			      <option value="en">Engels</option>
+			    </select>
+		  	</div>
+			<button type="submit">Zoeken</button>
+		</form>
+		<div th:if="${books}" class="results-container">
+			<h2>Zoekresultaten:</h2>
+			<table>
+				<tr>
+					<th>Titel</th>
+					<th>Auteur(s)</th>
+					<th>ISBN</th>
+					<th>Publicatie datum</th>
+				</tr>
+				<tr th:each="book : ${books}">
+					<td th:text="${book.title}"></td>
+					<td th:text="${book.author}"></td>
+					<td th:text="${book.isbn}"></td>
+					<td th:text="${book.publicationDate}"></td>
+				</tr>
+			</table>
+			<ul>
+			</ul>
+		</div>
+	</main>
+</body>
+</html>
